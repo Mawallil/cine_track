@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#19120a",
+                    "on-surface": "#f0e0d1",
+                    "surface-bright": "#41382e",
+                    "outline-variant": "#534434",
+                    "on-primary-fixed-variant": "#653e00",
+                    "outline": "#a08e7a",
+                    "on-error": "#690005",
+                    "tertiary-container": "#1abdff",
+                    "surface-container-lowest": "#140d06",
+                    "surface-container-high": "#31281f",
+                    "on-secondary-container": "#aeb9d0",
+                    "on-primary-container": "#613b00",
+                    "inverse-surface": "#f0e0d1",
+                    "primary-fixed": "#ffddb8",
+                    "on-secondary": "#263143",
+                    "primary-container": "#f59e0b",
+                    "on-tertiary-fixed": "#001e2d",
+                    "on-tertiary": "#00344a",
+                    "surface-container-highest": "#3c3329",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "on-primary-fixed": "#2a1700",
+                    "on-tertiary-fixed-variant": "#004c6a",
+                    "surface-container-low": "#221a12",
+                    "on-background": "#f0e0d1",
+                    "on-primary": "#472a00",
+                    "surface-variant": "#3c3329",
+                    "inverse-on-surface": "#382f25",
+                    "primary": "#ffc174",
+                    "on-secondary-fixed": "#111c2d",
+                    "on-surface-variant": "#d8c3ad",
+                    "on-tertiary-container": "#004966",
+                    "surface-tint": "#ffb95f",
+                    "error-container": "#93000a",
+                    "surface": "#19120a",
+                    "surface-container": "#261e15",
+                    "tertiary-fixed": "#c5e7ff",
+                    "tertiary": "#8fd5ff",
+                    "secondary-fixed-dim": "#bcc7de",
+                    "secondary-fixed": "#d8e3fb",
+                    "inverse-primary": "#855300",
+                    "secondary-container": "#3e495d",
+                    "error": "#ffb4ab",
+                    "secondary": "#bcc7de",
+                    "surface-dim": "#19120a",
+                    "primary-fixed-dim": "#ffb95f",
+                    "tertiary-fixed-dim": "#7fd0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "gutter": "24px",
+                    "xl": "64px",
+                    "margin-desktop": "48px",
+                    "lg": "40px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "headline-sm": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #19120a; /* Explicit Deep Midnight from config */
+            color: #f0e0d1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .cinematic-gradient {
+            background: linear-gradient(to bottom, rgba(25, 18, 10, 0) 0%, rgba(25, 18, 10, 0.6) 60%, rgba(25, 18, 10, 1) 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #41382e;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation Anchor -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-lg flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="movie_filter">movie_filter</span>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight">CineTrack</span>
+</div>
+<div class="flex items-center gap-margin-mobile">
+<button class="hover:text-primary-container dark:hover:text-primary-container transition-colors scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<button class="hover:text-primary-container dark:hover:text-primary-container transition-colors scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+</nav>
+<!-- Main Detail Canvas -->
+<main class="relative min-h-screen pb-32">
+<!-- Hero Section -->
+<section class="relative w-full h-[530px] md:h-[663px]">
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" data-alt="A sprawling, high-fidelity cinematic shot of a futuristic neon city under a rainy night sky, featuring deep blues and vibrant amber highlights. The scene is shot from a low angle looking up at towering skyscrapers, with a moody, atmospheric mist clinging to the ground. The lighting is sophisticated and dramatic, reflecting the premium dark cinematic aesthetic of the tracking app, with intense focus on visual clarity and professional grade color grading." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkx--RtzJU7tW3zBMhBPHRJv6fgzJ4PNLUzVG4sJg-VE0g1Nis_WIOce4qA5o_nFLWu9JCk1dCfhPhePsmZZPFP2wUhL2kokGfrEmurNkpBede5XvhrkZnOAEDxcbD3E_239fwHahGSQ3eDcrNdNQnJ2Mub8ksFGZk9PkCkol1zIrlUVS3hyqq9rj7F7K1ph7lcYRu2xKam0kN7cdVvxFOHcRb_7uJjfUOvvnOg2IngCYwLi9kNZh1Nn5yhYRDk_4_TcvBmkyEkXU')">
+<div class="absolute inset-0 cinematic-gradient"></div>
+</div>
+<div class="absolute bottom-0 left-0 w-full px-margin-mobile md:px-margin-desktop pb-base">
+<div class="flex flex-col gap-xs max-w-4xl">
+<div class="flex items-center justify-between">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg text-on-surface uppercase tracking-tight">Interstellar Drift</h1>
+<button class="group flex items-center justify-center w-12 h-12 rounded-full bg-surface-bright/30 backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95" id="favoriteToggle">
+<span class="material-symbols-outlined text-primary group-hover:fill-current" data-icon="favorite" id="heartIcon">favorite</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-sm mt-xs">
+<span class="flex items-center gap-1 text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            2h 49m
+                        </span>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="flex items-center gap-1 text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="category">category</span>
+                            Sci-Fi, Adventure
+                        </span>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="flex items-center gap-1 text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_month">calendar_month</span>
+                            Nov 7, 2014
+                        </span>
+<span class="ml-auto flex items-center gap-1 px-3 py-1 bg-primary text-on-primary rounded-full font-bold text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1">star</span>
+                            8.7
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Body -->
+<section class="px-margin-mobile md:px-margin-desktop mt-lg grid grid-cols-1 md:grid-cols-12 gap-xl">
+<!-- Left Side: Synopsis & Cast -->
+<div class="md:col-span-8 flex flex-col gap-lg">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary mb-base">Synopsis</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed max-w-3xl">
+                        A team of explorers travel beyond this galaxy in a desperate attempt to ensure humanity's survival. When a mysterious wormhole opens near Saturn, a group of scientists and pilots must venture into the unknown, leaving behind their loved ones on a dying Earth to search for a new home among the stars. In a race against time and gravity, they discover the profound connections that bind the human spirit across the vast reaches of space and time.
+                    </p>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary mb-md">Top Cast</h2>
+<div class="flex overflow-x-auto gap-gutter pb-4 custom-scrollbar">
+<!-- Cast Member 1 -->
+<div class="flex flex-col items-center gap-base min-w-[100px]">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-300">
+<img alt="Actor" class="w-full h-full object-cover" data-alt="A professional headshot of a rugged male actor with a contemplative expression, captured in a high-contrast studio setting with deep shadows and soft amber lighting. The style is cinematic and intimate, focusing on the character's face to convey emotion and depth, consistent with a high-end film tracking application's visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoGB9tELIOL1AqtMKJ9dAawz2DTx4naBO9nFn-9uMJAu0lN1SvDPNGT0QBZTmqVoEJ12SJt-7mzYOM3pe07B2EPXjDG8amZ_lBB4uFY-9EclNTHQpNF7TYms6OSZW_c0lZivPFVY37EocZVeC1Xwj51l65gn_5sSxmtFpI55oXpGEYTCDB6gbBGIvpy8NJJO_bLcnOpoycuEjMoEfRE7v5OaqX9u5sS9-4tvYQCVKbz77s6PBju1I-FBFeD_h0e2e6C8cVeaMhBjo"/>
+</div>
+<div class="text-center">
+<p class="text-label-md font-label-md text-on-surface line-clamp-1">Matthew M.</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-1">Cooper</p>
+</div>
+</div>
+<!-- Cast Member 2 -->
+<div class="flex flex-col items-center gap-base min-w-[100px]">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-300">
+<img alt="Actor" class="w-full h-full object-cover" data-alt="A high-resolution close-up portrait of a female actress with elegant features, illuminated by warm cinematic key light and cool fill light. The background is softly blurred with bokeh effects, emphasizing her expressive eyes and sophisticated presence, designed for a premium media interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAsB61bZ21YP0rr4x6IQpVBU6-EKjjz2fSj7McD4IywmlQgVjgPAc4Fe1o__p9dYDgH2eJmRyk5p9ZtHXEshGYnJoWQaolodRnFxS4q3ydM1DXMyIuWSWPeXQBwPX2hhGuXuBXm3QJYvhJk23FtI_Ss91tIx9VPbgAnPZ3bga8x5qpfw7z6CKqRPgVoSLsT8OErlPvPW90MzqjmFZjlgJiaL-74IqtCuF27Tc9RJXLWwVKngDF2NXlruwRNEaAqQQnZyIsJ-dQFIc"/>
+</div>
+<div class="text-center">
+<p class="text-label-md font-label-md text-on-surface line-clamp-1">Anne H.</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-1">Brand</p>
+</div>
+</div>
+<!-- Cast Member 3 -->
+<div class="flex flex-col items-center gap-base min-w-[100px]">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-300">
+<img alt="Actor" class="w-full h-full object-cover" data-alt="A portrait of a distinguished older male actor, featuring sharp lighting that highlights the textures and character in his face. The color palette is muted with deep blacks and subtle cool tones, creating a sense of authority and wisdom suitable for a premium cinematic profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZlos-BD4yMz9911A1-0fmjf8kXdGILhV_jOA_C_QhBTrfFchxhS5iTR2GSFXtVyU4e0Rj0LjWH0i0LKB_p0p_t5LPLIZuw01N4rf5jZJrsumwKE-bepdSBKAYT8riJmcEPsZjod1aFu6nBmuP9Ia9PJ86R4qMY4EX88r4CKGR2bG0xL72RqDojI10ZnPQkGtf6Np5LubSQJHnSUguVsBOmnX8I3QKDER0gASFq0UBCnj2DisZ7szVaNpG4YycRVlurQQasBA4K6Q"/>
+</div>
+<div class="text-center">
+<p class="text-label-md font-label-md text-on-surface line-clamp-1">Michael C.</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-1">Prof. Brand</p>
+</div>
+</div>
+<!-- Cast Member 4 -->
+<div class="flex flex-col items-center gap-base min-w-[100px]">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-300">
+<img alt="Actor" class="w-full h-full object-cover" data-alt="A cinematic portrait of a young actress with a look of determination. The lighting is soft yet directional, casting gentle shadows that define her features against a dark, moody background. The overall aesthetic is clean and modern, fitting perfectly within a high-end digital theater interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpRs5HSKGutyAmg26zhpwwMezWmYB24qtbDR1DuxRXzMhoTSyOJACnO8OmEijseUL4fuCDBmMTme7I1kWgI5bqljDJefPtnfLw20oroqNg1zTqdCvFt-q-iL38a_dYscyUgxwLiabg4t--RmrAT4zUKhYr2hxOE1PHodkuLQQJH_9I_HVKMCdy0XX-UuBEOAMI01747iDEshKW98_EVWS-rkpzmVlOVQU5ns2mjJKHOW2y0mbwdUGk14B-a3fcGLKWt52-7ptgIXg"/>
+</div>
+<div class="text-center">
+<p class="text-label-md font-label-md text-on-surface line-clamp-1">Jessica C.</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-1">Murph</p>
+</div>
+</div>
+<!-- Cast Member 5 -->
+<div class="flex flex-col items-center gap-base min-w-[100px]">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-300">
+<img alt="Actor" class="w-full h-full object-cover" data-alt="A sharp, professional headshot of a male actor in a modern cinematic style. The lighting is balanced, using a mix of warm and cool temperatures to create depth. His expression is neutral yet engaging, presented with the high-fidelity visual quality required for a premium film catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD08IAOO7iVtIlzpcrUS3IoRxszuMQVXqpmSRF8iLcRigsl0oIkKNRyU-1NmtIb6DKMpgIjAVLMpByZrEmqCwaEt0aYrxj338wcrQTi28BllI6Kg_5-EPir1WdIjsEyA0AaZoBQ8HVj-NBWwNV9dn47g1kd5byjd-pT4sDZBm3qJQIckL1z7LVzl756GlQwV_4Tle_Fy2VDpvN-YeYqVXkyUBStEN_NROGo_jYR9GmJkx_5BZNonjf3D1pQZyFG0T4rZvvJBE6mo3M"/>
+</div>
+<div class="text-center">
+<p class="text-label-md font-label-md text-on-surface line-clamp-1">Casey A.</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant line-clamp-1">Tom</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Bento Grid Stats / Actions -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-md border border-outline-variant/30 shadow-xl">
+<div class="flex items-center justify-between">
+<span class="text-headline-sm font-headline-sm text-on-surface">Tracking</span>
+<span class="material-symbols-outlined text-primary" data-icon="insights">insights</span>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="text-body-md font-body-md text-on-surface-variant">Watch status</span>
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-sm">In Progress</span>
+</div>
+<div class="w-full bg-surface-bright h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%]" style="transition: width 1s ease-out"></div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant text-right">65% (1h 49m left)</p>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-base">
+<button class="bg-primary text-on-primary py-3 rounded-lg flex items-center justify-center gap-2 font-bold hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1">play_arrow</span>
+                            Resume
+                        </button>
+<button class="bg-surface-bright/50 text-on-surface py-3 rounded-lg border border-outline-variant/50 hover:bg-surface-bright transition-all">
+                            Add Review
+                        </button>
+</div>
+</div>
+<!-- Bento Info Card -->
+<div class="bg-surface-container-high p-md rounded-xl border border-outline-variant/20 shadow-md">
+<h3 class="text-label-sm font-label-sm text-primary uppercase tracking-widest mb-sm">Director</h3>
+<div class="flex items-center gap-base">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="person">person</span>
+</div>
+<p class="text-body-md font-body-md">Christopher Nolan</p>
+</div>
+<div class="h-px bg-outline-variant/20 my-md"></div>
+<h3 class="text-label-sm font-label-sm text-primary uppercase tracking-widest mb-sm">Awards</h3>
+<div class="flex items-center gap-base">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="trophy">trophy</span>
+</div>
+<p class="text-body-md font-body-md">1 Oscar, 44 Wins Total</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended / Similar -->
+<section class="mt-xl px-margin-mobile md:px-margin-desktop">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-gutter">Similar Explorations</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-gutter">
+<!-- Movie Card 1 -->
+<div class="group relative aspect-[2/3] rounded-xl overflow-hidden cursor-pointer bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A dramatic cinematic poster-style image of a space shuttle launching against a dark violet nebula, featuring rich contrast and high saturation. The lighting emphasizes the power and scale of the craft, with vibrant orange fire trails cutting through the deep black of space, reflecting the cinematic depth of the CineTrack platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf9e7tzJqWhmVIX0CCJ_EODtHzfyi3j7B4QuXcEgDGW9H9_9qmrWsO00x3mh3OPB2MR0VhLXfmT59aV4fw7c4mcJzLrakRC1BkGwfA3dMu3iTt4eyqkYQ1l4apj4bQv5IA4Mr2OgPG0QYEiEr7FCDsrENT-HTZEfvE8LkcfVl2qlVuRPPnGA8y2GEMFUDQdewD_lc1HFau14xusSsOG5s-EOsWVQh9Jt-Iopr05_3DxguWlnM428lUUQHxmAWDojreg0ZznEBIQog"/>
+<div class="absolute top-2 right-2 px-2 py-1 bg-primary text-on-primary rounded font-bold text-[10px]">8.2</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 p-sm w-full">
+<p class="text-label-md font-label-md text-on-surface truncate">The Martian</p>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="group relative aspect-[2/3] rounded-xl overflow-hidden cursor-pointer bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A breathtaking landscape of an alien planet with two moons visible in a deep amber and purple sky. Crystal formations glow with a soft internal light in the foreground, creating a high-fidelity, otherworldly environment that aligns with the premium media-centric movie tracking experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_09sbbYv24lsLBqOsOHpjjHECC0dY7LuEHGYUEasWnKgqzLrpmDN6IacRSKoS4CGi5IdL2A0TG95X2BG_vOupcV6KqUyxeiiwAVoBmpNp0KpAUINHO_b5IQF10be-wacdYv4f_8JWKYurDUy9AweWl2AshlVVydfTKQ6cEpFn7ApcKZNoRaxhrwktwbQLpcL_6qTDPy5Bvc5lGSK7FBmZF7n576ALQFzCQ_9MXam1JpaUeYLadRCBmhakRPAjgVqls3nKXMDqU44"/>
+<div class="absolute top-2 right-2 px-2 py-1 bg-primary text-on-primary rounded font-bold text-[10px]">8.0</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 p-sm w-full">
+<p class="text-label-md font-label-md text-on-surface truncate">Ad Astra</p>
+</div>
+</div>
+<!-- Hidden on mobile to keep clean grid -->
+<div class="group relative aspect-[2/3] rounded-xl overflow-hidden cursor-pointer hidden md:block bg-surface-container-low border border-outline-variant/30 hover:border-primary/50 transition-all">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A wide cinematic shot of a lone astronaut standing on the desolate, dusty surface of a red planet, looking out at a horizon filled with distant mountains and a hazy atmosphere. The color palette is dominated by ochre and sienna, with sharp professional lighting and high resolution textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk855vnEEKKlYY13ReA-sK-lxe1R12suCW_UUGwXMiAm45ko_sAQgNLhL2_nLW1JPm8HN3pyI4fIMOBikGwMADfYeFfVUK73LKXqKix_Hm6srcimZgiXHn2va2TP-dRX9RySqmUGLJheLdM0MproTMcmhklD8WCeuwl0U3PKCvbee_pHzPDSBdvJf3A1FEnZV4_rDnBjFhIYMIUUjT0pguQcyAWrPNxD8gkQ3XS5GepMrnU7QXQxEOM9xRcht_b6gE4CoaLuWJFKk"/>
+<div class="absolute top-2 right-2 px-2 py-1 bg-primary text-on-primary rounded font-bold text-[10px]">7.9</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 p-sm w-full">
+<p class="text-label-md font-label-md text-on-surface truncate">First Man</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container/90 dark:bg-surface-container/90 backdrop-blur-xl rounded-t-xl shadow-lg border-t border-outline-variant/10 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-sm font-label-sm mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-label-sm font-label-sm mt-1">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Favorite Toggle Interactivity
+        const favBtn = document.getElementById('favoriteToggle');
+        const heartIcon = document.getElementById('heartIcon');
+        let isFav = false;
+
+        favBtn.addEventListener('click', () => {
+            isFav = !isFav;
+            if (isFav) {
+                heartIcon.style.fontVariationSettings = "'FILL' 1";
+                favBtn.classList.add('bg-primary/20');
+            } else {
+                heartIcon.style.fontVariationSettings = "'FILL' 0";
+                favBtn.classList.remove('bg-primary/20');
+            }
+        });
+
+        // Add some basic scroll reveal for bento cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-animate').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

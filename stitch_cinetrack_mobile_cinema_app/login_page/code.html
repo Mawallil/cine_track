@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | CineTrack</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#19120a",
+                      "on-surface": "#f0e0d1",
+                      "surface-bright": "#41382e",
+                      "outline-variant": "#534434",
+                      "on-primary-fixed-variant": "#653e00",
+                      "outline": "#a08e7a",
+                      "on-error": "#690005",
+                      "tertiary-container": "#1abdff",
+                      "surface-container-lowest": "#140d06",
+                      "surface-container-high": "#31281f",
+                      "on-secondary-container": "#aeb9d0",
+                      "on-primary-container": "#613b00",
+                      "inverse-surface": "#f0e0d1",
+                      "primary-fixed": "#ffddb8",
+                      "on-secondary": "#263143",
+                      "primary-container": "#f59e0b",
+                      "on-tertiary-fixed": "#001e2d",
+                      "on-tertiary": "#00344a",
+                      "surface-container-highest": "#3c3329",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#3c475a",
+                      "on-primary-fixed": "#2a1700",
+                      "on-tertiary-fixed-variant": "#004c6a",
+                      "surface-container-low": "#221a12",
+                      "on-background": "#f0e0d1",
+                      "on-primary": "#472a00",
+                      "surface-variant": "#3c3329",
+                      "inverse-on-surface": "#382f25",
+                      "primary": "#ffc174",
+                      "on-secondary-fixed": "#111c2d",
+                      "on-surface-variant": "#d8c3ad",
+                      "on-tertiary-container": "#004966",
+                      "surface-tint": "#ffb95f",
+                      "error-container": "#93000a",
+                      "surface": "#19120a",
+                      "surface-container": "#261e15",
+                      "tertiary-fixed": "#c5e7ff",
+                      "tertiary": "#8fd5ff",
+                      "secondary-fixed-dim": "#bcc7de",
+                      "secondary-fixed": "#d8e3fb",
+                      "inverse-primary": "#855300",
+                      "secondary-container": "#3e495d",
+                      "error": "#ffb4ab",
+                      "secondary": "#bcc7de",
+                      "surface-dim": "#19120a",
+                      "primary-fixed-dim": "#ffb95f",
+                      "tertiary-fixed-dim": "#7fd0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "gutter": "24px",
+                      "xl": "64px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "display-lg": ["Montserrat"],
+                      "display-lg-mobile": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "headline-sm": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0F172A; /* Deep Midnight per user request */
+        }
+        .cinematic-glow {
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.1);
+        }
+        .input-recessed {
+            background-color: #141b2d;
+            border: 1px solid #3e495d; /* Slate Blue Border */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex min-h-screen items-center justify-center font-body-md text-on-surface p-margin-mobile md:p-margin-desktop overflow-hidden">
+<!-- Background Decorative Elements -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary-container/20 blur-[120px] rounded-full"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-md bg-surface-container-low/40 backdrop-blur-xl p-8 rounded-xl cinematic-glow border border-white/5">
+<!-- Brand Identity Section -->
+<header class="flex flex-col items-center mb-10">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mb-4 shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-on-primary-container text-[32px]">movie_filter</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">CineTrack</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2">Your cinematic journey continues</p>
+</header>
+<!-- Login Form -->
+<form class="space-y-6" id="loginForm">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-secondary-container" for="email">Email</label>
+<div class="relative group">
+<input class="w-full h-12 px-4 rounded-lg input-recessed text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container/50 transition-all placeholder:text-on-surface-variant/30" id="email" placeholder="Enter your email" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block font-label-md text-label-md text-on-secondary-container" for="password">Password</label>
+<a class="text-label-sm font-label-sm text-primary hover:underline transition-all" href="#">Forgot password?</a>
+</div>
+<div class="relative group">
+<input class="w-full h-12 px-4 rounded-lg input-recessed text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container/50 transition-all placeholder:text-on-surface-variant/30" id="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Login Button -->
+<div class="pt-2">
+<button class="w-full h-12 bg-primary-container text-on-primary-container font-headline-sm rounded-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20" type="submit">
+                    Login
+                </button>
+<!-- Error State Placeholder -->
+<p class="text-error text-label-sm font-label-sm mt-3 text-center animate-pulse" id="errorMessage">
+                    Invalid credentials
+                </p>
+</div>
+</form>
+<!-- Footer Actions -->
+<footer class="mt-10 text-center space-y-6">
+<div class="flex items-center gap-4 text-on-surface-variant/40">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<span class="text-label-sm">OR</span>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="flex gap-4 justify-center">
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-surface-variant/40 transition-colors">
+<img alt="Google Logo" class="w-5 h-5" data-alt="A clean, flat vector illustration of the Google logo centered on a minimal white background with soft studio lighting. The style is modern, professional, and corporate, reflecting a premium digital service. The composition is simple and focuses on high-fidelity brand identity with sharp edges and clear colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmRQtMyIvzr7az84RVZw0shCaueAiHCjd_Tt771OqTsENiHe9JV7WheYulov8VA0hAn7MI0fdnFu97n4mg9hMgH8aFVelOrR3dZ-Xc5Itg1TbgWOpEgJnFKJ1WE0r9EmuVPcSLvU77vaWxHbstmuvWTLNfl1zcB2ve8kY1JTn9rgsRBU0N44UBuc2YQ-YA7jgZBwlk-k7m3VNUVJWOncRo8IwKVLcITnXdMzzGu3j2OoZHtEBxst_epnyDmPe4TEofWW-q5RQbMPc"/>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-surface-variant/40 transition-colors">
+<span class="material-symbols-outlined text-on-surface">apps</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a class="text-primary font-semibold hover:underline decoration-primary/30 underline-offset-4" href="#">Sign Up</a>
+</p>
+</footer>
+</main>
+<!-- Visual Polish: Content Image in Background (Glassmorphism effect) -->
+<div class="fixed inset-0 -z-10 opacity-20">
+<img alt="Cinema Background" class="w-full h-full object-cover grayscale blur-sm" data-alt="A cinematic, wide-angle shot of an empty, high-end luxury theater with velvet red seats and glowing floor lights. The scene is captured in a dark, moody environment with deep shadows and soft amber highlights reflecting off the screen's surface. The overall atmosphere is premium and sophisticated, utilizing a dark cinematic aesthetic with hints of slate blue and midnight tones to create a sense of professional depth and mystery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCutDlc_2Pus6i2Ez3-RsrTWJI3vEcAND9XoF5JOH1sDFwEcN4p2MsHNK5F4TlhDmei9xn_aEU6NcqpN22kz8WcOo-B3Odvvk6wZ75A8TwWVVUR8aqUAZVZwjlPaW7FmooSMYQuzPiUDW0hic9c0Evlu-MYwXbEXqRLdHwnJTERCsw29sxhOH1FewBN3o2uOSVSO4XjyascbTcu3O_rBZnPb3Zh6Wd8NP3JoFcp2o11PF6A_wcK30bMQ0_bCZNaFm_iBhmmKDc_0_k"/>
+</div>
+<script>
+        // Micro-interaction for form submission simulation
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalContent = btn.innerHTML;
+            
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = `<span class="material-symbols-outlined animate-spin">progress_activity</span>`;
+            
+            setTimeout(() => {
+                // Simulate "Invalid credentials" error per user request
+                errorMessage.classList.remove('hidden');
+                errorMessage.classList.add('flex', 'justify-center', 'items-center');
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+                
+                // Add a small shake animation to the form
+                form.parentElement.classList.add('animate-[shake_0.4s_ease-in-out]');
+                setTimeout(() => {
+                    form.parentElement.classList.remove('animate-[shake_0.4s_ease-in-out]');
+                }, 400);
+            }, 1200);
+        });
+
+        // Add shake keyframes dynamically
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-4px); }
+                50% { transform: translateX(4px); }
+                75% { transform: translateX(-4px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

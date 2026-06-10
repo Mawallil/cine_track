@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineTrack Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#19120a",
+                    "on-surface": "#f0e0d1",
+                    "surface-bright": "#41382e",
+                    "outline-variant": "#534434",
+                    "on-primary-fixed-variant": "#653e00",
+                    "outline": "#a08e7a",
+                    "on-error": "#690005",
+                    "tertiary-container": "#1abdff",
+                    "surface-container-lowest": "#140d06",
+                    "surface-container-high": "#31281f",
+                    "on-secondary-container": "#aeb9d0",
+                    "on-primary-container": "#613b00",
+                    "inverse-surface": "#f0e0d1",
+                    "primary-fixed": "#ffddb8",
+                    "on-secondary": "#263143",
+                    "primary-container": "#f59e0b",
+                    "on-tertiary-fixed": "#001e2d",
+                    "on-tertiary": "#00344a",
+                    "surface-container-highest": "#3c3329",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "on-primary-fixed": "#2a1700",
+                    "on-tertiary-fixed-variant": "#004c6a",
+                    "surface-container-low": "#221a12",
+                    "on-background": "#f0e0d1",
+                    "on-primary": "#472a00",
+                    "surface-variant": "#3c3329",
+                    "inverse-on-surface": "#382f25",
+                    "primary": "#ffc174",
+                    "on-secondary-fixed": "#111c2d",
+                    "on-surface-variant": "#d8c3ad",
+                    "on-tertiary-container": "#004966",
+                    "surface-tint": "#ffb95f",
+                    "error-container": "#93000a",
+                    "surface": "#19120a",
+                    "surface-container": "#261e15",
+                    "tertiary-fixed": "#c5e7ff",
+                    "tertiary": "#8fd5ff",
+                    "secondary-fixed-dim": "#bcc7de",
+                    "secondary-fixed": "#d8e3fb",
+                    "inverse-primary": "#855300",
+                    "secondary-container": "#3e495d",
+                    "error": "#ffb4ab",
+                    "secondary": "#bcc7de",
+                    "surface-dim": "#19120a",
+                    "primary-fixed-dim": "#ffb95f",
+                    "tertiary-fixed-dim": "#7fd0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "gutter": "24px",
+                    "xl": "64px",
+                    "margin-desktop": "48px",
+                    "lg": "40px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "headline-sm": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #19120a;
+            color: #f0e0d1;
+            overflow-x: hidden;
+        }
+        .cinematic-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-item-active .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background min-h-screen">
+<!-- Top AppBar (From Shared Components JSON) -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-lg docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary" data-icon="movie_filter">movie_filter</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight">CineTrack</h1>
+</div>
+<button class="hover:text-primary-container dark:hover:text-primary-container transition-colors scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex min-h-screen">
+<!-- Navigation Drawer (Target Component - Shared Components JSON Applied) -->
+<aside class="bg-surface-container-low dark:bg-surface-container-low h-screen w-80 rounded-r-xl shadow-xl flex flex-col py-xl sticky top-0 left-0">
+<!-- Profile Header -->
+<div class="px-md mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary ring-4 ring-primary/10">
+<img alt="User profile picture" class="w-full h-full object-cover" data-alt="A close-up studio portrait of a sophisticated film enthusiast with a warm, welcoming expression. The lighting is low-key and dramatic, echoing a cinematic noir style with deep shadows and golden rim lighting that highlights facial features against a dark, textured Slate Blue background. The mood is professional and premium, perfectly matching the high-end theater aesthetic of CineTrack." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzqAi7yPQaEVJi9XZzL8RVZZiKWARmK9xYsehC27O1iPa5SasvtZCp9TW7lLWjisOHze83MtMtbCgKnrBh63zt3jJNSIY-wm8FIVA9jQvUOzoE92a5-DzGUpEGlg5aB9TfpYHJIqxMP4ToSL52bLT88DJjlmMwkNR4LASsox-eT7z0nUq7D5xw7aWZ1WEqc5gw-9fccAL7hduDDtGR5dm9kaKuZuFdachA6NBblLvMSwchUC1RDb-GbKf5p6VGDOMxz35o5SlSRYw"/>
+</div>
+<div class="flex flex-col">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Movie Enthusiast</h2>
+<div class="flex items-center gap-xs mt-1">
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wider uppercase">Premium Member</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1 opacity-70">Since 2023</p>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-2">
+<!-- App Settings is Active based on the prompt description -->
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 hover:bg-surface-variant/50 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="account_circle">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 hover:bg-surface-variant/50 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="text-label-md font-label-md flex-1">Notifications</span>
+<span class="bg-primary text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">3</span>
+</a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-full mx-2 px-4 py-3 opacity-80 nav-item-active" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-label-md font-label-md">App Settings</span>
+</a>
+<div class="pt-xl mt-xl border-t border-outline-variant/30">
+<a class="flex items-center gap-md text-error hover:bg-error/10 mx-2 px-4 py-3 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Log Out</span>
+</a>
+</div>
+</nav>
+<!-- Bottom Brand Anchor -->
+<div class="px-md mt-auto">
+<div class="p-md rounded-xl bg-surface-container-high/50 border border-outline-variant/20">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-base">Current Storage</p>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%;"></div>
+</div>
+<p class="text-label-sm font-label-sm text-primary mt-base font-bold">6.2 GB of 10 GB</p>
+</div>
+</div>
+</aside>
+<!-- Main Display Area (Contextual background) -->
+<section class="flex-1 p-margin-desktop bg-background relative overflow-hidden">
+<!-- Animated Background Placeholder (Using Shader for cinematic effect) -->
+
+<div class="relative z-10">
+<div class="max-w-4xl">
+<h2 class="text-display-lg font-display-lg text-on-surface mb-lg">App Settings</h2>
+<!-- Bento Grid Content for Settings -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Playback Settings -->
+<div class="p-md bg-surface-container rounded-xl border border-outline-variant/30 hover:border-primary/50 transition-all">
+<div class="flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="play_circle">play_circle</span>
+<h3 class="text-headline-sm font-headline-sm">Playback</h3>
+</div>
+<div class="space-y-base">
+<div class="flex justify-between items-center py-base border-b border-outline-variant/10">
+<span class="text-body-md font-body-md text-on-surface-variant">Default Quality</span>
+<span class="text-label-md font-label-md text-primary">4K Ultra HD</span>
+</div>
+<div class="flex justify-between items-center py-base border-b border-outline-variant/10">
+<span class="text-body-md font-body-md text-on-surface-variant">Auto-play Trailers</span>
+<div class="w-10 h-5 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy & Security -->
+<div class="p-md bg-surface-container rounded-xl border border-outline-variant/30 hover:border-primary/50 transition-all">
+<div class="flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h3 class="text-headline-sm font-headline-sm">Privacy</h3>
+</div>
+<div class="space-y-base">
+<div class="flex justify-between items-center py-base border-b border-outline-variant/10">
+<span class="text-body-md font-body-md text-on-surface-variant">Public Profile</span>
+<div class="w-10 h-5 bg-surface-variant rounded-full relative">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-on-surface-variant rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center py-base border-b border-outline-variant/10">
+<span class="text-body-md font-body-md text-on-surface-variant">Watch History</span>
+<span class="text-label-md font-label-md text-primary">Enabled</span>
+</div>
+</div>
+</div>
+<!-- Language & Region -->
+<div class="md:col-span-2 p-md bg-surface-container-high rounded-xl border border-outline-variant/30 overflow-hidden relative group">
+<div class="absolute top-0 right-0 p-lg opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]" data-icon="language">language</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-headline-sm font-headline-sm mb-base">Language &amp; Content</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-md mb-md">Customize your browsing experience based on your local preferences and preferred languages.</p>
+<div class="flex gap-sm">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg text-label-md font-label-md font-bold">Change Region</button>
+<button class="border border-outline px-4 py-2 rounded-lg text-label-md font-label-md hover:bg-surface-bright transition-colors">Manage Languages</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden bg-surface-container/90 dark:bg-surface-container/90 backdrop-blur-xl fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 shadow-lg rounded-t-xl border-t border-outline-variant/20">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-sm font-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-label-sm font-label-sm">Watchlist</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+
+        // Simple Toggle Simulation
+        const toggles = document.querySelectorAll('.w-10.h-5');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const dot = this.querySelector('div');
+                if (this.classList.contains('bg-primary')) {
+                    this.classList.replace('bg-primary', 'bg-surface-variant');
+                    dot.classList.replace('right-0.5', 'left-0.5');
+                    dot.classList.replace('bg-on-primary', 'bg-on-surface-variant');
+                } else {
+                    this.classList.replace('bg-surface-variant', 'bg-primary');
+                    dot.classList.replace('left-0.5', 'right-0.5');
+                    dot.classList.replace('bg-on-surface-variant', 'bg-on-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

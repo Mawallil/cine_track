@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineTrack - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .vibrate-active {
+            animation: vibrate 0.3s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes vibrate {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#19120a",
+                      "on-surface": "#f0e0d1",
+                      "surface-bright": "#41382e",
+                      "outline-variant": "#534434",
+                      "on-primary-fixed-variant": "#653e00",
+                      "outline": "#a08e7a",
+                      "on-error": "#690005",
+                      "tertiary-container": "#1abdff",
+                      "surface-container-lowest": "#140d06",
+                      "surface-container-high": "#31281f",
+                      "on-secondary-container": "#aeb9d0",
+                      "on-primary-container": "#613b00",
+                      "inverse-surface": "#f0e0d1",
+                      "primary-fixed": "#ffddb8",
+                      "on-secondary": "#263143",
+                      "primary-container": "#f59e0b",
+                      "on-tertiary-fixed": "#001e2d",
+                      "on-tertiary": "#00344a",
+                      "surface-container-highest": "#3c3329",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#3c475a",
+                      "on-primary-fixed": "#2a1700",
+                      "on-tertiary-fixed-variant": "#004c6a",
+                      "surface-container-low": "#221a12",
+                      "on-background": "#f0e0d1",
+                      "on-primary": "#472a00",
+                      "surface-variant": "#3c3329",
+                      "inverse-on-surface": "#382f25",
+                      "primary": "#ffc174",
+                      "on-secondary-fixed": "#111c2d",
+                      "on-surface-variant": "#d8c3ad",
+                      "on-tertiary-container": "#004966",
+                      "surface-tint": "#ffb95f",
+                      "error-container": "#93000a",
+                      "surface": "#19120a",
+                      "surface-container": "#261e15",
+                      "tertiary-fixed": "#c5e7ff",
+                      "tertiary": "#8fd5ff",
+                      "secondary-fixed-dim": "#bcc7de",
+                      "secondary-fixed": "#d8e3fb",
+                      "inverse-primary": "#855300",
+                      "secondary-container": "#3e495d",
+                      "error": "#ffb4ab",
+                      "secondary": "#bcc7de",
+                      "surface-dim": "#19120a",
+                      "primary-fixed-dim": "#ffb95f",
+                      "tertiary-fixed-dim": "#7fd0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "gutter": "24px",
+                      "xl": "64px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "display-lg": ["Montserrat"],
+                      "display-lg-mobile": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "headline-sm": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- Top App Bar -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-lg text-primary dark:text-primary docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-sm">
+<button class="scale-95 transition-transform duration-200 material-symbols-outlined text-headline-md">movie_filter</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight">CineTrack</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden md:flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</button>
+<button class="scale-95 transition-transform duration-200 material-symbols-outlined">settings</button>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center w-full px-margin-mobile md:px-margin-desktop py-xl">
+<div class="max-w-2xl w-full">
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Notifications</h2>
+<p class="font-body-md text-on-surface-variant opacity-80">Personalize how CineTrack keeps you updated on your cinematic journey.</p>
+</div>
+<!-- Bento Styled Controls Card -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<!-- Toggle 1 -->
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant/30 flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-weight="fill">new_releases</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-bright peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">New Releases</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Get notified when tracked movies hit theaters or streaming.</p>
+</div>
+</div>
+<!-- Toggle 2 -->
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant/30 flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-weight="fill">alarm</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-bright peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Reminders</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily alerts for scheduled watchlists and movie nights.</p>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="bg-surface-container-high rounded-xl p-lg border border-primary/20 flex flex-col items-center text-center gap-md">
+<div class="space-y-2">
+<h4 class="font-headline-sm text-headline-sm">Verify Connection</h4>
+<p class="text-on-surface-variant text-body-md">Ensure your device is receiving signals correctly from our theater servers.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container font-headline-sm text-headline-sm px-xl py-md rounded-full shadow-lg shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all w-full md:w-auto" id="trigger-btn" onclick="triggerTest()">
+                    Trigger Test Notification
+                </button>
+</div>
+</div>
+</main>
+<!-- Overlay / Alert Popup (Initially Hidden) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-gutter pointer-events-none opacity-0 transition-opacity duration-300" id="test-notification">
+<div class="absolute inset-0 bg-background/60 backdrop-blur-sm pointer-events-auto" onclick="closeNotification()"></div>
+<div class="glass-panel relative w-full max-w-sm rounded-xl p-md border border-primary/40 shadow-2xl pointer-events-auto transform transition-transform duration-300 translate-y-8" id="notification-content">
+<div class="flex items-center gap-md">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-headline-md" style="font-variation-settings: 'FILL' 1;">movie_filter</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-widest">System Message</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Now</span>
+</div>
+<p class="text-on-surface font-headline-sm text-headline-sm mb-1 leading-tight">Test Notification</p>
+<p class="text-on-surface-variant font-body-md text-body-md">CineTrack is ready!</p>
+</div>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-on-surface" onclick="closeNotification()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container/90 dark:bg-surface-container/90 backdrop-blur-xl rounded-t-xl shadow-lg border-t border-surface-container-highest/50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-sm text-label-sm">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function triggerTest() {
+            const overlay = document.getElementById('test-notification');
+            const content = document.getElementById('notification-content');
+            const btn = document.getElementById('trigger-btn');
+
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100');
+            content.classList.remove('translate-y-8');
+            content.classList.add('translate-y-0');
+            
+            // Interaction feedback on button
+            btn.classList.add('scale-95');
+            setTimeout(() => btn.classList.remove('scale-95'), 150);
+        }
+
+        function closeNotification() {
+            const overlay = document.getElementById('test-notification');
+            const content = document.getElementById('notification-content');
+
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            overlay.classList.remove('opacity-100');
+            content.classList.add('translate-y-8');
+            content.classList.remove('translate-y-0');
+        }
+
+        // Handle ESC key to close
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeNotification();
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineTrack - Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .shimmer {
+            background: linear-gradient(90deg, #261e15 25%, #3c3329 50%, #261e15 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+        @keyframes shimmer {
+            from { background-position: -200% 0; }
+            to { background-position: 200% 0; }
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-lg docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary text-headline-md font-headline-md">movie_filter</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight">CineTrack</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:text-primary-container dark:hover:text-primary-container transition-colors scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-on-surface-variant">settings</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile md:px-margin-desktop mt-4">
+<!-- Search Section -->
+<div class="sticky top-[72px] z-40 pb-4 bg-background">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline pointer-events-none">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border-none rounded-xl text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary-container transition-all duration-300" placeholder="Search movies..." type="text"/>
+</div>
+<!-- Quick Filters (Chips) -->
+<div class="flex gap-2 mt-4 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap">All Movies</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-bright/20 transition-colors font-label-md text-label-md whitespace-nowrap">Trending</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-bright/20 transition-colors font-label-md text-label-md whitespace-nowrap">Top Rated</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-bright/20 transition-colors font-label-md text-label-md whitespace-nowrap">Release Year</button>
+</div>
+</div>
+<!-- Movie Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter mt-2">
+<!-- Movie Card 1 -->
+<div class="group relative flex flex-col gap-2 scale-95 hover:scale-100 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A cinematic movie poster for a neon-drenched cyberpunk thriller. The scene features a solitary figure standing in the rain under glowing amber and blue neon signs in a futuristic urban alley. The lighting is high-contrast with deep shadows, reflecting a dark cinematic atmosphere. The overall style is moody and sophisticated, using the CineTrack signature amber for glow effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGgN033UzCSU_ITYxBq2FVlCyfcbZ7teTTmqeFncTOKfUo847nm00stjRDu-DvkpCfSBrBqecQKglSpFhUKqJW5-8XLRDe_-i43Z6kGD6LKhmTCKNmffE8vxnijH24RYnzyKpAgzklPy7XCe5CBQfDDsyWvPPWhaONjkWRBS6SugWFbOcH2FhcKeieyixeL70UqBYrpmJnw9h5a2cc0fBzR-aKWBJ8mDg1qj56FSaSYUZ3LvAViKrm_GvRU3olOsHQl1iSIscUW8k"/>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-1 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                        8.4
+                    </div>
+</div>
+<div class="px-1">
+<h3 class="text-on-surface font-headline-sm text-headline-sm truncate">Neon Horizon</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">2024 • Sci-Fi</p>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="group relative flex flex-col gap-2 scale-95 hover:scale-100 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vintage-style film poster showcasing an old 35mm camera in a dusty, sunlit studio environment. The color palette is warm and earthy, featuring deep midnight blues and rich amber highlights. Light particles dance in the sunbeams, creating a premium and nostalgic atmosphere for a drama movie tracking experience. The visual is sharp and detailed, emphasizing cinematic history." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0bO0r1K3CiLUSaJ10c3aKayAH1DUzQP8yHkyOIzS63_ruJo4pV539btuLITdTo3hwZXg0K6ztz5VGKi_QEihInS2Olmw1mRCeZxFQornNu0oFK2jkb7jnRFD0hhQGL6h6VpsBD8-OQRe_Ly1Qxs8QGI_vUU8sYJzsUNAjXgfrZWYWo9eD6602kHI4B71L2UYLnuCQEQQo6q4XK-IeL47qI-oug2odfrQ4-pNY6IA1d3xnpmRd6E2UMn03sS3EljfzCwsltZBTPb0"/>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-1 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                        7.9
+                    </div>
+</div>
+<div class="px-1">
+<h3 class="text-on-surface font-headline-sm text-headline-sm truncate">The Silent Reel</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">2023 • Drama</p>
+</div>
+</div>
+<!-- Loading State Row (Skeleton) -->
+<div class="flex flex-col gap-2 scale-95">
+<div class="shimmer aspect-[2/3] rounded-xl"></div>
+<div class="px-1 space-y-2">
+<div class="shimmer h-4 w-3/4 rounded"></div>
+<div class="shimmer h-3 w-1/2 rounded"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 scale-95">
+<div class="shimmer aspect-[2/3] rounded-xl"></div>
+<div class="px-1 space-y-2">
+<div class="shimmer h-4 w-3/4 rounded"></div>
+<div class="shimmer h-3 w-1/2 rounded"></div>
+</div>
+</div>
+<!-- Additional Results -->
+<div class="group relative flex flex-col gap-2 scale-95 hover:scale-100 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A breathtaking landscape of a distant alien planet with two moons rising over a jagged mountain range. The terrain is a mix of deep slate blue and vivid amber flora, glowing softly in the twilight. The image is captured with wide-screen cinematic framing, evoking a sense of epic space exploration and high-fidelity visual storytelling. Soft ambient shadows provide depth to the valleys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRjHbBTCQzP8UEpmCzZgsDVil69ZHXWeDgn-4Hzjx2Ao6kk0sPu2Ku2SlA6rvD_p-QAyMmtbCUzjBEWbwCu2ecjJGH-NrmEewewgZ-6YOORx_q_jjVWj59s9g84R1WbWJmz5SqYUmyAVeF5mAwm2yiXRJbP8jqnELGdwCKsGuILkpm9xZaTPieAwvWWKjnkCq2duDWnhoE1vb_d0R34RlfHaJ_u5WAaLErF55SF5KxCRn11oBKPyBo0uh2lQ8DgIrI5QXHR_2-fdU"/>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-1 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                        9.1
+                    </div>
+</div>
+<div class="px-1">
+<h3 class="text-on-surface font-headline-sm text-headline-sm truncate">Binary Sunset</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">2024 • Adventure</p>
+</div>
+</div>
+<div class="group relative flex flex-col gap-2 scale-95 hover:scale-100 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A moody, high-key portrait of a detective in a trench coat, standing under a flickering street lamp in the fog. The lighting is noir-inspired, with long shadows and sharp highlights. The color palette is restricted to midnight blues and cool grays, punctuated by the warm amber glow of a lit cigarette. The overall mood is mysterious and sophisticated, characteristic of a premium crime drama." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuTe8S0op2EmHqpVymZ89ecOjdKXGXxyt8nk-gvliWZePAinxosQdxrvklZ_36rO6e8PFXdN0aZlaTuGzDZvN4bJZ78VG5bqJPhGA7DmwONvyeEw8x1mGCjI9pMRMMsJfNTjIqYUQuwkIw5CdCVR1c3nV4bA3ON13Vxqq3hm6N2b1LEyH06A-GYEaMKXekKRbH6W9ZZ7POd4Jyrk3fDaXaYW_no3eCscz9vle7QASsZJS1E_TlgxzuXOGzNFiZqgP8sdB9oJxcjz0"/>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-1 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                        8.8
+                    </div>
+</div>
+<div class="px-1">
+<h3 class="text-on-surface font-headline-sm text-headline-sm truncate">The Fog Within</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">2024 • Crime</p>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer (Mobile Side Menu Simulation Hidden by Default) -->
+<div class="fixed inset-0 bg-black/60 z-[60] hidden transition-opacity duration-300 backdrop-blur-sm" id="side-drawer">
+<div class="bg-surface-container-low dark:bg-surface-container-low h-full w-80 rounded-r-xl shadow-xl flex flex-col py-xl transform -translate-x-full transition-transform duration-300">
+<div class="px-8 mb-8 flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[32px]">account_circle</span>
+</div>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary">Movie Enthusiast</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Premium Member</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 hover:bg-surface-variant/50 transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 hover:bg-surface-variant/50 transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">App Settings</span>
+</a>
+<div class="mt-auto pt-8">
+<a class="flex items-center gap-4 text-error mx-2 px-4 py-3 hover:bg-error-container/20 transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Log Out</span>
+</a>
+</div>
+</nav>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container/90 dark:bg-surface-container/90 backdrop-blur-xl rounded-t-xl shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold hover:bg-surface-bright/20 rounded-full p-2 transition-all scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="text-label-sm font-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-label-sm font-label-sm">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for search focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('scale-[1.02]');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('scale-[1.02]');
+        });
+
+        // Skeleton loading simulation
+        setTimeout(() => {
+            // In a real app, this would be replaced with actual content
+            console.log("Loading more movies...");
+        }, 3000);
+    </script>
+</body></html>

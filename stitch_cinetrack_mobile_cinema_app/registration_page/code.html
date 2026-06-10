@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineTrack - Create Your Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#19120a",
+                      "on-surface": "#f0e0d1",
+                      "surface-bright": "#41382e",
+                      "outline-variant": "#534434",
+                      "on-primary-fixed-variant": "#653e00",
+                      "outline": "#a08e7a",
+                      "on-error": "#690005",
+                      "tertiary-container": "#1abdff",
+                      "surface-container-lowest": "#140d06",
+                      "surface-container-high": "#31281f",
+                      "on-secondary-container": "#aeb9d0",
+                      "on-primary-container": "#613b00",
+                      "inverse-surface": "#f0e0d1",
+                      "primary-fixed": "#ffddb8",
+                      "on-secondary": "#263143",
+                      "primary-container": "#f59e0b",
+                      "on-tertiary-fixed": "#001e2d",
+                      "on-tertiary": "#00344a",
+                      "surface-container-highest": "#3c3329",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#3c475a",
+                      "on-primary-fixed": "#2a1700",
+                      "on-tertiary-fixed-variant": "#004c6a",
+                      "surface-container-low": "#221a12",
+                      "on-background": "#f0e0d1",
+                      "on-primary": "#472a00",
+                      "surface-variant": "#3c3329",
+                      "inverse-on-surface": "#382f25",
+                      "primary": "#ffc174",
+                      "on-secondary-fixed": "#111c2d",
+                      "on-surface-variant": "#d8c3ad",
+                      "on-tertiary-container": "#004966",
+                      "surface-tint": "#ffb95f",
+                      "error-container": "#93000a",
+                      "surface": "#19120a",
+                      "surface-container": "#261e15",
+                      "tertiary-fixed": "#c5e7ff",
+                      "tertiary": "#8fd5ff",
+                      "secondary-fixed-dim": "#bcc7de",
+                      "secondary-fixed": "#d8e3fb",
+                      "inverse-primary": "#855300",
+                      "secondary-container": "#3e495d",
+                      "error": "#ffb4ab",
+                      "secondary": "#bcc7de",
+                      "surface-dim": "#19120a",
+                      "primary-fixed-dim": "#ffb95f",
+                      "tertiary-fixed-dim": "#7fd0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "gutter": "24px",
+                      "xl": "64px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "display-lg": ["Montserrat"],
+                      "display-lg-mobile": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "headline-sm": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .cinematic-gradient {
+            background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(24px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0f172a;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Suppressed shared components logic: Task-focused pages exclude global nav) -->
+<header class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">movie_filter</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary tracking-tight">CineTrack</h1>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-margin-mobile py-xl relative overflow-hidden">
+<!-- Atmospheric Background Decoration -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-tertiary/10 rounded-full blur-[120px]"></div>
+<div class="w-full max-w-md z-10">
+<!-- Registration Card -->
+<div class="glass-panel p-md md:p-lg rounded-xl border border-outline-variant/30 shadow-2xl">
+<div class="mb-lg text-center">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">Create Account</h2>
+<p class="text-on-surface-variant font-body-md">Join the elite community of cinema lovers.</p>
+</div>
+<form class="space-y-md" onsubmit="return false;">
+<!-- Username Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="username">Username</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg py-3 pl-12 pr-4 text-on-surface placeholder:text-outline/50 transition-all outline-none" id="username" placeholder="cinemaniac_99" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="email">Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg py-3 pl-12 pr-4 text-on-surface placeholder:text-outline/50 transition-all outline-none" id="email" placeholder="viewer@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="password">Password</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container rounded-lg py-3 pl-12 pr-4 text-on-surface placeholder:text-outline/50 transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Sign Up Button -->
+<div class="pt-2">
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary-container font-headline-sm py-4 rounded-lg shadow-lg shadow-primary-container/20 transition-all active:scale-95 duration-200">
+                            Sign Up
+                        </button>
+<!-- Error State -->
+<div class="mt-3 flex items-center gap-1.5 text-error">
+<span class="material-symbols-outlined text-[18px]">error</span>
+<span class="font-label-md text-label-md">Email already in use</span>
+</div>
+</div>
+</form>
+<div class="mt-lg pt-lg border-t border-outline-variant/20 text-center">
+<p class="text-on-surface-variant font-body-md">
+                        Already have an account? 
+                        <a class="text-primary hover:text-primary-fixed transition-colors font-semibold ml-1" href="#">Login</a>
+</p>
+</div>
+</div>
+<!-- Social Proof / Features -->
+<div class="mt-lg grid grid-cols-3 gap-md opacity-60">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary mb-1">star</span>
+<p class="text-label-sm font-label-sm uppercase tracking-widest">Rate</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary mb-1">visibility</span>
+<p class="text-label-sm font-label-sm uppercase tracking-widest">Track</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary mb-1">group</span>
+<p class="text-label-sm font-label-sm uppercase tracking-widest">Social</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual Anchor Background -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-40">
+<div class="absolute inset-0 bg-[#0f172a]"></div>
+<img alt="Cinematic theater background" class="w-full h-full object-cover mix-blend-overlay grayscale" data-alt="A moody, high-contrast photograph of an empty, classic cinema auditorium with rows of velvet red seats leading toward a large, blank white projection screen. The lighting is low and atmospheric, with soft blue and deep amber highlights catching the edges of the furniture, evoking a premium and immersive cinematic atmosphere. The overall style is modern and sophisticated, aligning with a dark-mode user interface palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChgbsLFmQ-nPgsbsEkxiNq9zEIDCIWba0cz0r7C4sNGdOsPLtcXwuqrostes9556D1tX4UVss6sevdLjG2e187JTLlWFMiWCyOPFLi3WOiJT2QQKl937F8DBTaLkMIOfReaVa-mo6Yf2ML5W5iwuHLjgUnanwWMV1GjUFv3mKCT1zpBoHAOURWtRo0ipYzkpQcHbMe5ZXc2-CI296X3niunPpd9QIVY70Q074O7FEv1RJJgvLCEqgWfRcJ52j5MpYKLdYWur55XNY"/>
+</div>
+<footer class="py-base text-center text-outline/40 font-label-sm text-label-sm">
+        © 2024 CineTrack Premium. All rights reserved.
+    </footer>
+<script>
+        // Subtle micro-interaction for input fields
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.02]');
+                input.parentElement.parentElement.classList.add('transition-transform');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.02]');
+            });
+        });
+
+        // CTA pulse animation simulation
+        const signUpBtn = document.querySelector('button');
+        signUpBtn.addEventListener('mousedown', () => {
+            signUpBtn.style.transform = 'scale(0.98)';
+        });
+        signUpBtn.addEventListener('mouseup', () => {
+            signUpBtn.style.transform = 'scale(1)';
+        });
+    </script>
+</body></html>

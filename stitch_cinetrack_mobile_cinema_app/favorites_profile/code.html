@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineTrack - Favorites &amp; Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#19120a",
+                        "on-surface": "#f0e0d1",
+                        "surface-bright": "#41382e",
+                        "outline-variant": "#534434",
+                        "on-primary-fixed-variant": "#653e00",
+                        "outline": "#a08e7a",
+                        "on-error": "#690005",
+                        "tertiary-container": "#1abdff",
+                        "surface-container-lowest": "#140d06",
+                        "surface-container-high": "#31281f",
+                        "on-secondary-container": "#aeb9d0",
+                        "on-primary-container": "#613b00",
+                        "inverse-surface": "#f0e0d1",
+                        "primary-fixed": "#ffddb8",
+                        "on-secondary": "#263143",
+                        "primary-container": "#f59e0b",
+                        "on-tertiary-fixed": "#001e2d",
+                        "on-tertiary": "#00344a",
+                        "surface-container-highest": "#3c3329",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-primary-fixed": "#2a1700",
+                        "on-tertiary-fixed-variant": "#004c6a",
+                        "surface-container-low": "#221a12",
+                        "on-background": "#f0e0d1",
+                        "on-primary": "#472a00",
+                        "surface-variant": "#3c3329",
+                        "inverse-on-surface": "#382f25",
+                        "primary": "#ffc174",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-surface-variant": "#d8c3ad",
+                        "on-tertiary-container": "#004966",
+                        "surface-tint": "#ffb95f",
+                        "error-container": "#93000a",
+                        "surface": "#19120a",
+                        "surface-container": "#261e15",
+                        "tertiary-fixed": "#c5e7ff",
+                        "tertiary": "#8fd5ff",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "secondary-fixed": "#d8e3fb",
+                        "inverse-primary": "#855300",
+                        "secondary-container": "#3e495d",
+                        "error": "#ffb4ab",
+                        "secondary": "#bcc7de",
+                        "surface-dim": "#19120a",
+                        "primary-fixed-dim": "#ffb95f",
+                        "tertiary-fixed-dim": "#7fd0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "margin-desktop": "48px",
+                        "lg": "40px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "headline-sm": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(160, 142, 122, 0.1);
+        }
+        .movie-card-shadow {
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #19120a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #41382e;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="bg-background/80 backdrop-blur-lg sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="movie_filter">movie_filter</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary tracking-tight">CineTrack</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Search</a>
+<a class="text-primary font-bold font-label-md text-label-md" href="#">Watchlist</a>
+</nav>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors scale-95 duration-200" data-icon="settings">settings</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mt-8 md:mt-12">
+<!-- User Welcome Header -->
+<section class="flex flex-col md:flex-row items-center gap-6 mb-12">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-tr from-primary to-primary-container rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+<img alt="User Profile" class="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-surface-container object-cover" data-alt="A sophisticated close-up portrait of a cinematic movie enthusiast with warm, low-key dramatic lighting that highlights character features. The setting is a dark, modern lounge with subtle lens flares and a deep amber color grade. The background features blurred silhouettes of film equipment, maintaining a high-fidelity cinematic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPHl3dNx0PaZs6tHRNXznoTC3O1kgY0FmcfjzWFj5gg-q0b5NlG4mNHsQVntumS47srT0kTJl8vSka8ud2HdUFZVOGgzrvEpauHvOKDVzOpRhuRZ0cZKt7lTFCoQt9-vyqAFY_BWkwMX7Y7WrxbST14i26iDh6OPjAFGPdofCVXOyWCNNjEJ0dm-B-mVRV9IK-b421OjO3jARyI3gQuSzGX3HA6MyEmyLLNIKKoySehAvEWmVlk44HoizBQaLYw45po_XBw_mrru8"/>
+</div>
+<div class="text-center md:text-left">
+<h2 class="text-white font-headline-md text-headline-md md:text-display-lg-mobile lg:text-headline-md mb-1">Welcome, Julian</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Cinephile since 2023 • Premium Member</p>
+<div class="flex gap-4 mt-4 justify-center md:justify-start">
+<div class="flex flex-col items-center px-4 border-r border-outline-variant/30">
+<span class="text-primary font-bold text-headline-sm">42</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm uppercase tracking-widest">Movies</span>
+</div>
+<div class="flex flex-col items-center px-4">
+<span class="text-primary font-bold text-headline-sm">12</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm uppercase tracking-widest">Lists</span>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<!-- My Watchlist Section -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="bookmark">bookmark</span>
+                        My Watchlist
+                    </h3>
+<span class="text-on-surface-variant text-label-md font-label-md">6 Items</span>
+</div>
+<!-- Vertical Watchlist -->
+<div class="space-y-4">
+<!-- Movie Card 1 -->
+<div class="glass-card group p-4 rounded-xl flex gap-6 hover:bg-surface-variant/30 transition-all duration-300 relative overflow-hidden">
+<div class="w-24 h-36 md:w-28 md:h-40 flex-shrink-0 rounded-lg overflow-hidden movie-card-shadow">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A professional vertical movie poster aesthetic showing a moody sci-fi landscape with futuristic neon orange lights against a dark slate blue sky. The composition features a lone silhouette standing before a massive celestial object, rendered with high contrast and sharp cinematic details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIu6GaVJbU6Z-jVHHA1yA1uFGv8NkkOK3WdmAX9m48NKsXOb6LZbz9rwjc70jwPXPds-zlO8Nm2SL5eBFkJGNrAhrw2J21cutMV0iz7rJ8-tskfm8_wOzYJ7dPeNyz_ToXgtnHuNBQ4qdtm_qfFuL-8EGi73xSPcl2IuXIR_3NmHlWwcEYxOxAG1pl2E1kYJefCPWLEXVQ_KYTuxoaUMD12CYrkWxRwLgHwO0fDMfc8ULSOXvZtnr7ULgzfZ2pPjcgBqGEpULIGIA"/>
+</div>
+<div class="flex-grow flex flex-col justify-center py-2">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-on-surface font-headline-sm text-headline-sm mb-1">Stellar Horizon</h4>
+<p class="text-on-surface-variant text-body-md mb-2">Sci-Fi • 2h 15m • 2024</p>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-error/10 hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-primary font-bold text-label-md">8.4</span>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-secondary-container/50 text-on-secondary-container text-label-sm font-label-sm hover:bg-secondary-container transition-colors">Details</button>
+</div>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="glass-card group p-4 rounded-xl flex gap-6 hover:bg-surface-variant/30 transition-all duration-300 relative overflow-hidden">
+<div class="w-24 h-36 md:w-28 md:h-40 flex-shrink-0 rounded-lg overflow-hidden movie-card-shadow">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A cinematic still of a classic black and white film scene depicting a vintage theater balcony under dramatic noir lighting. The image is crisp with high dynamic range, showing deep blacks and luminous whites, evoking a sense of nostalgia and prestige cinematic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMi4QVH-C6SmKKejQNEyc24h4PLwVnuBO_rxpWfDVB857g-EA5pfvAtUuBWG0cr-NGUhduS2bXQu2jMqjZiqjsWW1wy39OIU5VEfbJJA_p2dEgy9SbiOdHCDlC29waF3l5uAx2W-brclAcx-8rYva3zEWv_KMxwKYXZgYjGmpvMOc3zXB-tpMaLeb5zRJ7ClhxoS35UbbFfVnBU8Hj0A0yjn7sfJRYZspDwr60rQviZfEWSVKyfo9vfDL8Tpm7FkAYtYkDKZSbf44"/>
+</div>
+<div class="flex-grow flex flex-col justify-center py-2">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-on-surface font-headline-sm text-headline-sm mb-1">Noir Echoes</h4>
+<p class="text-on-surface-variant text-body-md mb-2">Drama • 1h 48m • 1952</p>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-error/10 hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-primary font-bold text-label-md">9.1</span>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-secondary-container/50 text-on-secondary-container text-label-sm font-label-sm hover:bg-secondary-container transition-colors">Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State & Discovery Section -->
+<div class="space-y-8">
+<div class="glass-card p-8 rounded-2xl border-dashed border-2 border-outline-variant/30 text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-outline text-[32px]" data-icon="favorite_border">favorite_border</span>
+</div>
+<h4 class="text-on-surface font-headline-sm text-headline-sm mb-2">No favorites yet</h4>
+<p class="text-on-surface-variant text-body-md mb-8">Save the films you love to see them appear here in your curated list.</p>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold font-label-md text-label-md hover:bg-primary-container transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary/20">
+                        Discover Movies
+                    </button>
+</div>
+<!-- Suggested Trends -->
+<div class="bg-surface-container p-6 rounded-2xl">
+<h5 class="text-on-surface font-label-sm font-label-sm uppercase tracking-widest mb-4">Trending Now</h5>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-bright text-on-surface-variant rounded-full text-label-sm font-label-sm border border-outline-variant/30 cursor-pointer hover:border-primary transition-colors">#NoirWeek</span>
+<span class="px-3 py-1.5 bg-surface-bright text-on-surface-variant rounded-full text-label-sm font-label-sm border border-outline-variant/30 cursor-pointer hover:border-primary transition-colors">#Cyberpunk2024</span>
+<span class="px-3 py-1.5 bg-surface-bright text-on-surface-variant rounded-full text-label-sm font-label-sm border border-outline-variant/30 cursor-pointer hover:border-primary transition-colors">#IndieGems</span>
+<span class="px-3 py-1.5 bg-surface-bright text-on-surface-variant rounded-full text-label-sm font-label-sm border border-outline-variant/30 cursor-pointer hover:border-primary transition-colors">#OscarBuzz</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container/90 backdrop-blur-xl flex justify-around items-center px-4 pb-4 pt-2 shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-bright/20 rounded-full p-2" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span class="font-label-sm text-label-sm">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 rounded-full p-2" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple remove item logic
+        document.querySelectorAll('[data-icon="delete"]').forEach(btn => {
+            btn.closest('button').addEventListener('click', function() {
+                const card = this.closest('.glass-card');
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(20px)';
+                setTimeout(() => {
+                    card.remove();
+                }, 300);
+            });
+        });
+    </script>
+</body></html>
