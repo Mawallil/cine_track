@@ -163,17 +163,7 @@ class _MoviePosterCard extends StatelessWidget {
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: const Color(0xFF1E293B), // Background color if image fails
-          image: movie.posterPath.isNotEmpty 
-            ? DecorationImage(
-                image: NetworkImage(
-                  movie.posterPath.startsWith('http') 
-                    ? movie.posterPath 
-                    : 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
-                ),
-                fit: BoxFit.cover,
-              )
-            : null,
+          color: const Color(0xFF1E293B),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.3),
@@ -182,41 +172,62 @@ class _MoviePosterCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Colors.black.withValues(alpha: 0.8),
-              ],
-            ),
-          ),
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            fit: StackFit.expand,
             children: [
-              Text(
-                movie.title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              if (movie.posterPath.isNotEmpty)
+                Image.network(
+                  movie.posterPath.startsWith('http') 
+                    ? movie.posterPath 
+                    : 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => const Center(
+                    child: Icon(Icons.broken_image, color: Colors.white24, size: 50),
+                  ),
+                )
+              else
+                const Center(child: Icon(Icons.movie, color: Colors.white24, size: 50)),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withValues(alpha: 0.8),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  const Icon(Icons.star, color: Color(0xFFF59E0B), size: 16),
-                  const SizedBox(width: 4),
-                  Text(
-                    movie.rating.toString(),
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      movie.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        const Icon(Icons.star, color: Color(0xFFF59E0B), size: 16),
+                        const SizedBox(width: 4),
+                        Text(
+                          movie.rating.toString(),
+                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

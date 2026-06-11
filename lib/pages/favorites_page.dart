@@ -120,6 +120,9 @@ class _FavoriteMovieCard extends StatelessWidget {
                 width: 90,
                 height: 120,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => const Center(
+                  child: Icon(Icons.broken_image, color: Colors.white24),
+                ),
               ),
             ),
             const SizedBox(width: 16),
