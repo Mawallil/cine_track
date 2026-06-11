@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/movie.dart';
 import '../services/api_service.dart';
 import 'movie_detail_page.dart';
+import 'favorites_page.dart';
+import 'search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,9 +26,30 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.movie_filter, color: Color(0xFFF59E0B)),
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 16.0),
+          child: Icon(Icons.movie_filter, color: Color(0xFFF59E0B)),
+        ),
         title: const Text('CineTrack'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchPage()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite_border),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FavoritesPage()),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
@@ -86,7 +109,30 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // Add more horizontal lists or grids here
+            // Placeholder categories
+            _buildCategoryRow('Action'),
+            _buildCategoryRow('Comedy'),
+            _buildCategoryRow('Sci-Fi'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategoryRow(String name) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1E293B),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(name, style: const TextStyle(color: Colors.white, fontSize: 16)),
+            const Icon(Icons.chevron_right, color: Colors.white54),
           ],
         ),
       ),
@@ -125,7 +171,7 @@ class _MoviePosterCard extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),
@@ -139,7 +185,7 @@ class _MoviePosterCard extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
-                Colors.black.withOpacity(0.8),
+                Colors.black.withValues(alpha: 0.8),
               ],
             ),
           ),

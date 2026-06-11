@@ -1,10 +1,51 @@
 import 'package:flutter/material.dart';
 import '../models/movie.dart';
+import '../services/database_service.dart';
 
-class MovieDetailPage extends StatelessWidget {
+class MovieDetailPage extends StatefulWidget {
   final Movie movie;
 
   const MovieDetailPage({super.key, required this.movie});
+
+  @override
+  State<MovieDetailPage> createState() => _MovieDetailPageState();
+}
+
+class _MovieDetailPageState extends State<MovieDetailPage> {
+  final DatabaseService _dbService = DatabaseService();
+  bool _isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkFavoriteStatus();
+  }
+
+  Future<void> _checkFavoriteStatus() async {
+    final status = await _dbService.isFavorite(widget.movie.id);
+    if (mounted) {
+      setState(() {
+        _isFavorite = status;
+      });
+    }
+  }
+
+  Future<void> _toggleFavorite() async {
+    if (_isFavorite) {
+      await _dbService.removeFavorite(widget.movie.id);
+    } else {
+      await _dbService.insertFavorite(widget.movie);
+    }
+    _checkFavoriteStatus();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(_isFavorite ? 'Removed from Watchlist' : 'Added to Watchlist'),
+          duration: const Duration(seconds: 1),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +62,9 @@ class MovieDetailPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        movie.backdropPath.startsWith('http')
-                          ? movie.backdropPath
-                          : 'https://image.tmdb.org/t/p/original${movie.backdropPath}'
+                        widget.movie.backdropPath.startsWith('http')
+                          ? widget.movie.backdropPath
+                          : 'https://image.tmdb.org/t/p/original${widget.movie.backdropPath}'
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -46,7 +87,7 @@ class MovieDetailPage extends StatelessWidget {
                   top: 40,
                   left: 16,
                   child: CircleAvatar(
-                    backgroundColor: Colors.black.withOpacity(0.5),
+                    backgroundColor: Colors.black.withValues(alpha: 0.5),
                     child: IconButton(
                       icon: const Icon(Icons.arrow_back, color: Colors.white),
                       onPressed: () => Navigator.pop(context),
@@ -61,7 +102,7 @@ class MovieDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title,
+                    widget.movie.title,
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
                   const SizedBox(height: 12),
@@ -70,7 +111,7 @@ class MovieDetailPage extends StatelessWidget {
                       const Icon(Icons.star, color: Color(0xFFF59E0B), size: 20),
                       const SizedBox(width: 4),
                       Text(
-                        movie.rating.toString(),
+                        widget.movie.rating.toString(),
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -78,12 +119,12 @@ class MovieDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 16),
                       Text(
-                        movie.releaseDate.split('-')[0],
+                        widget.movie.releaseDate.split('-')[0],
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 16),
                       Text(
-                        movie.duration,
+                        widget.movie.duration,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
@@ -91,7 +132,7 @@ class MovieDetailPage extends StatelessWidget {
                   const SizedBox(height: 24),
                   Wrap(
                     spacing: 8,
-                    children: movie.genres.map((genre) => Chip(
+                    children: widget.movie.genres.map((genre) => Chip(
                       label: Text(genre),
                       backgroundColor: const Color(0xFF1E293B),
                       labelStyle: const TextStyle(color: Colors.white),
@@ -110,7 +151,7 @@ class MovieDetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    movie.overview,
+                    widget.movie.overview,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       height: 1.5,
                       color: Colors.white70,
@@ -118,11 +159,9 @@ class MovieDetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton.icon(
-                    onPressed: () {
-                      // Add to favorites
-                    },
-                    icon: const Icon(Icons.favorite_border),
-                    label: const Text('Add to Watchlist'),
+                    onPressed: _toggleFavorite,
+                    icon: Icon(_isFavorite ? Icons.favorite : Icons.favorite_border),
+                    label: Text(_isFavorite ? 'Remove from Watchlist' : 'Add to Watchlist'),
                   ),
                   const SizedBox(height: 40),
                 ],
