@@ -163,14 +163,17 @@ class _MoviePosterCard extends StatelessWidget {
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-            image: NetworkImage(
-              movie.posterPath.startsWith('http') 
-                ? movie.posterPath 
-                : 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
-            ),
-            fit: BoxFit.cover,
-          ),
+          color: const Color(0xFF1E293B), // Background color if image fails
+          image: movie.posterPath.isNotEmpty 
+            ? DecorationImage(
+                image: NetworkImage(
+                  movie.posterPath.startsWith('http') 
+                    ? movie.posterPath 
+                    : 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
+                ),
+                fit: BoxFit.cover,
+              )
+            : null,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.3),

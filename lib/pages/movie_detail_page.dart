@@ -60,14 +60,17 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                   height: 400,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        widget.movie.backdropPath.startsWith('http')
-                          ? widget.movie.backdropPath
-                          : 'https://image.tmdb.org/t/p/original${widget.movie.backdropPath}'
-                      ),
-                      fit: BoxFit.cover,
-                    ),
+                    color: const Color(0xFF1E293B),
+                    image: widget.movie.backdropPath.isNotEmpty
+                      ? DecorationImage(
+                          image: NetworkImage(
+                            widget.movie.backdropPath.startsWith('http')
+                              ? widget.movie.backdropPath
+                              : 'https://image.tmdb.org/t/p/original${widget.movie.backdropPath}'
+                          ),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
                   ),
                 ),
                 Container(

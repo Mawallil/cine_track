@@ -72,16 +72,24 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                         );
                       },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1E293B),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         child: movie.posterPath.isNotEmpty
-                            ? Image.network(
-                                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                                fit: BoxFit.cover,
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.network(
+                                  'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => const Center(
+                                    child: Icon(Icons.broken_image, color: Colors.white24),
+                                  ),
+                                ),
                               )
-                            : Container(
-                                color: Colors.grey,
-                                child: const Icon(Icons.movie, size: 50),
+                            : const Center(
+                                child: Icon(Icons.movie, color: Colors.white24, size: 40),
                               ),
                       ),
                     );

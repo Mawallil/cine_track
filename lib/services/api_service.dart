@@ -30,7 +30,7 @@ class ApiService {
   Future<List<Movie>> searchMovies(String query) async {
     try {
       final response = await http.get(
-        Uri.parse('$_baseUrl/search/movie?api_key=$_apiKey&query=$query'),
+        Uri.parse('$_baseUrl/search/movie?api_key=$_apiKey&query=${Uri.encodeComponent(query)}'),
       );
 
       if (response.statusCode == 200) {
