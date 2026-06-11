@@ -16,7 +16,6 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-    _notificationService.init();
   }
 
   void _triggerTestNotification() async {

@@ -14,19 +14,26 @@ class NotificationService {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const DarwinInitializationSettings initializationSettingsIOS =
+    const DarwinInitializationSettings initializationSettingsDarwin =
         DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
+      defaultPresentAlert: true,
+      defaultPresentBadge: true,
+      defaultPresentSound: true,
     );
 
     const InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
-      iOS: initializationSettingsIOS,
+      iOS: initializationSettingsDarwin,
+      macOS: initializationSettingsDarwin,
     );
 
-    await _notificationsPlugin.initialize(settings: initializationSettings);
+    // The analyzer indicates this version of the plugin requires the 'settings' named parameter
+    await _notificationsPlugin.initialize(
+      settings: initializationSettings,
+    );
   }
 
   Future<void> showNotification({required String title, required String body}) async {
@@ -37,13 +44,19 @@ class NotificationService {
       priority: Priority.high,
     );
 
-    const DarwinNotificationDetails iosDetails = DarwinNotificationDetails();
+    const DarwinNotificationDetails darwinDetails = DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
 
     const NotificationDetails platformDetails = NotificationDetails(
       android: androidDetails,
-      iOS: iosDetails,
+      iOS: darwinDetails,
+      macOS: darwinDetails,
     );
 
+    // The analyzer indicates this version requires named parameters for 'show'
     await _notificationsPlugin.show(
       id: 0,
       title: title,
