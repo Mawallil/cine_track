@@ -4,6 +4,8 @@ import '../services/api_service.dart';
 import 'movie_detail_page.dart';
 import 'favorites_page.dart';
 import 'search_page.dart';
+import 'settings_page.dart';
+import '../widgets/app_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,10 +28,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 16.0),
-          child: Icon(Icons.movie_filter, color: Color(0xFFF59E0B)),
-        ),
         title: const Text('CineTrack'),
         actions: [
           IconButton(
@@ -53,11 +51,15 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // Navigate to Settings
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+              );
             },
           ),
         ],
       ),
+      drawer: const AppDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
