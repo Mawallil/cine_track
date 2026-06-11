@@ -19,6 +19,9 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _triggerTestNotification() async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Triggering notification...')),
+    );
     await _notificationService.showNotification(
       title: 'CineTrack',
       body: 'This is a test notification from your capstone app!',

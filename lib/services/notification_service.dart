@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 
@@ -9,6 +10,7 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin _notificationsPlugin = FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
+    debugPrint('NotificationService: Initializing...');
     tz.initializeTimeZones();
 
     const AndroidInitializationSettings initializationSettingsAndroid =
@@ -30,13 +32,19 @@ class NotificationService {
       macOS: initializationSettingsDarwin,
     );
 
-    // The analyzer indicates this version of the plugin requires the 'settings' named parameter
-    await _notificationsPlugin.initialize(
-      settings: initializationSettings,
-    );
+    try {
+      final bool? initialized = await _notificationsPlugin.initialize(
+        settings: initializationSettings,
+      );
+      debugPrint('NotificationService: Initialization result: $initialized');
+    } catch (e) {
+      debugPrint('NotificationService: Initialization ERROR: $e');
+    }
   }
 
   Future<void> showNotification({required String title, required String body}) async {
+    debugPrint('NotificationService: Attempting to show: $title');
+    
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'cinetrack_channel',
       'CineTrack Notifications',
@@ -56,12 +64,16 @@ class NotificationService {
       macOS: darwinDetails,
     );
 
-    // The analyzer indicates this version requires named parameters for 'show'
-    await _notificationsPlugin.show(
-      id: 0,
-      title: title,
-      body: body,
-      notificationDetails: platformDetails,
-    );
+    try {
+      await _notificationsPlugin.show(
+        id: 0,
+        title: title,
+        body: body,
+        notificationDetails: platformDetails,
+      );
+      debugPrint('NotificationService: show() called successfully');
+    } catch (e) {
+      debugPrint('NotificationService: show() ERROR: $e');
+    }
   }
 }
