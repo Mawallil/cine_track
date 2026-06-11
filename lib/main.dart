@@ -3,6 +3,7 @@ import 'app_theme.dart';
 import 'pages/login_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const CineTrackApp());
 }
 

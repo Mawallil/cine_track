@@ -9,38 +9,48 @@ class ApiService {
   static const String _apiKey = '8db0e0d5a329d2f2d9f48529e875080a'; 
 
   Future<List<Movie>> getTrendingMovies() async {
+    print('Fetching trending movies...');
     try {
       final response = await http.get(
         Uri.parse('$_baseUrl/trending/movie/day?api_key=$_apiKey'),
       );
+      print('Trending API Status: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
         final List<dynamic> results = data['results'];
+        print('Fetched ${results.length} trending movies');
         return results.map((json) => Movie.fromJson(json)).toList();
       } else {
+        print('Error response: ${response.body}');
         throw Exception('Failed to load trending movies');
       }
     } catch (e) {
+      print('Network Error: $e');
       // Fallback to mock data if API fails or for demo purposes
       return _getMockMovies();
     }
   }
 
   Future<List<Movie>> searchMovies(String query) async {
+    print('Searching for: $query');
     try {
       final response = await http.get(
         Uri.parse('$_baseUrl/search/movie?api_key=$_apiKey&query=${Uri.encodeComponent(query)}'),
       );
+      print('Search API Status: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
         final List<dynamic> results = data['results'];
+        print('Found ${results.length} search results');
         return results.map((json) => Movie.fromJson(json)).toList();
       } else {
+        print('Search error response: ${response.body}');
         throw Exception('Failed to search movies');
       }
     } catch (e) {
+      print('Search Network Error: $e');
       return [];
     }
   }
