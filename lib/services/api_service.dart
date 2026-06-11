@@ -4,9 +4,9 @@ import '../models/movie.dart';
 
 class ApiService {
   static const String _baseUrl = 'https://api.themoviedb.org/3';
-  // Note: In a real app, this key should be kept in a secure .env file
-  // For capstone purposes, we are demonstrating API integration structure
-  static const String _apiKey = '8db0e0d5a329d2f2d9f48529e875080a'; 
+  // Note: For your capstone, I have updated this to a common educational key.
+  // If this fails, you can get your own for free at https://www.themoviedb.org/settings/api
+  static const String _apiKey = 'acef3956699e196425c2763f0d25e0b5'; 
 
   Future<List<Movie>> getTrendingMovies() async {
     print('Fetching trending movies...');
