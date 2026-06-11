@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,7 +20,10 @@ class _LoginPageState extends State<LoginPage> {
         _errorMessage = 'Invalid credentials';
       } else {
         _errorMessage = null;
-        // Proceed to Home
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
       }
     });
   }
