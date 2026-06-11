@@ -179,9 +179,7 @@ class _MoviePosterCard extends StatelessWidget {
             children: [
               if (movie.posterPath.isNotEmpty)
                 Image.network(
-                  movie.posterPath.startsWith('http') 
-                    ? movie.posterPath 
-                    : 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                  movie.posterPath,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) => const Center(
                     child: Icon(Icons.broken_image, color: Colors.white24, size: 50),

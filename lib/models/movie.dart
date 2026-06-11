@@ -17,19 +17,25 @@ class Movie {
     required this.backdropPath,
     required this.rating,
     required this.releaseDate,
-    this.duration = '2h 15m',
-    this.genres = const ['Action', 'Sci-Fi'],
+    this.duration = '1h',
+    this.genres = const [],
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
+    // TVMaze search results wrap the object in a "show" field
+    final show = json.containsKey('show') ? json['show'] : json;
+    
     return Movie(
-      id: json['id'] ?? 0,
-      title: json['title'] ?? json['name'] ?? 'No Title',
-      overview: json['overview'] ?? 'No overview available.',
-      posterPath: json['poster_path'] ?? '',
-      backdropPath: json['backdrop_path'] ?? '',
-      rating: (json['vote_average'] as num?)?.toDouble() ?? 0.0,
-      releaseDate: json['release_date'] ?? json['first_air_date'] ?? '',
+      id: show['id'] ?? 0,
+      title: show['name'] ?? 'No Title',
+      overview: (show['summary'] ?? 'No summary available.')
+          .replaceAll(RegExp(r'<[^>]*>'), ''), // Remove HTML tags from TVMaze summary
+      posterPath: show['image']?['medium'] ?? '',
+      backdropPath: show['image']?['original'] ?? '',
+      rating: (show['rating']?['average'] as num?)?.toDouble() ?? 0.0,
+      releaseDate: show['premiered'] ?? 'N/A',
+      duration: '${show['runtime'] ?? 60} min',
+      genres: List<String>.from(show['genres'] ?? []),
     );
   }
 }

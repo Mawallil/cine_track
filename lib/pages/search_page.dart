@@ -81,7 +81,7 @@ class _SearchPageState extends State<SearchPage> {
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
                                 child: Image.network(
-                                  'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                  movie.posterPath,
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) => const Center(
                                     child: Icon(Icons.broken_image, color: Colors.white24),

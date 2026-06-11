@@ -114,9 +114,7 @@ class _FavoriteMovieCard extends StatelessWidget {
                 bottomLeft: Radius.circular(16),
               ),
               child: Image.network(
-                movie.posterPath.startsWith('http')
-                  ? movie.posterPath
-                  : 'https://image.tmdb.org/t/p/w200${movie.posterPath}',
+                movie.posterPath,
                 width: 90,
                 height: 120,
                 fit: BoxFit.cover,

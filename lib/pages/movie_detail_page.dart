@@ -62,9 +62,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                   color: const Color(0xFF1E293B),
                   child: widget.movie.backdropPath.isNotEmpty
                     ? Image.network(
-                        widget.movie.backdropPath.startsWith('http')
-                          ? widget.movie.backdropPath
-                          : 'https://image.tmdb.org/t/p/original${widget.movie.backdropPath}',
+                        widget.movie.backdropPath,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) => const Center(
                           child: Icon(Icons.broken_image, color: Colors.white24, size: 50),
